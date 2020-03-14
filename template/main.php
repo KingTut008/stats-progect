@@ -6,7 +6,7 @@
     <input type="text" name="login" placeholder="Логин" required>
     <input type="password" name="password" placeholder="Пароль" required>
     <input class="btn_enter" type="submit" name="enter" value="Вход">
-    <input class="btn_reg" type="submit" name="refister" value="Регистрация">
+    <input class="btn_reg" type="submit" name="register" value="Регистрация">
 </form>
 <div class="result"><?= $massege ?? " " ?></div>
 
