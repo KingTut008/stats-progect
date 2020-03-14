@@ -1,0 +1,33 @@
+input {
+    box-sizing: border-box;
+    display: block;
+    width: 250px;
+    padding: 10px;
+    border: 1px solid #434343;
+    border-radius: 3px;
+    font-size: 14px;
+    margin: 10px auto;
+}
+
+.btn_enter {
+    background-color: #2fdf2f;
+    color: #fff;
+    border: 0px;
+}
+
+.btn_action {
+    background-color: #2fdf2f;
+    color: #fff;
+    border: 0px;
+}
+
+.btn_reg {
+    background-color: #cf2222;
+    color: #fff;
+    border: 0px;
+}
+
+.result {
+    width: 250px;
+    margin: 10px auto;
+}
