@@ -27,6 +27,12 @@ input {
     border: 0px;
 }
 
+.btn_exit {
+    background-color: #cf2222;
+    color: #fff;
+    border: 0px;
+}
+
 .result {
     width: 250px;
     margin: 10px auto;
