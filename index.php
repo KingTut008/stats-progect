@@ -58,12 +58,47 @@ if (isset($_POST['register'])) {
     }
 }
 
+if (isset($_POST['generate'])) {
+    $userid = $_SESSION['loginId'];
+    $string_query = "INSERT INTO actions_user (user_id, action_date) VALUES ";
+    for ($i = 0; $i < 300; $i++) {
+        $day = rand(1, 31);
+        $huor = rand(0, 23);
+        $min = rand(0, 59);
+        $sec = rand(0, 59);
+        if ($huor < 10) {
+            $huor = '0'.$huor;
+        }
+        if ($min < 10) {
+            $min = '0'.$min;
+        }
+        if ($sec < 10) {
+            $sec = '0'.$sec;
+        }
+        if ($day < 10) {
+            $day = '0'.$day;
+        }
+        $date = "2020-03-$day $huor:$min:$sec";
+        $string_query .= "('".$userid."', '".$date."'),";
+    }
+    $string_query = rtrim( $string_query, ',' );  
+    $pgResult = pg_query($dbConnection, $string_query); 
+    if($pgResult) {
+        $massege = "Данные успешно сгенерированы и добавлены в базу (300 записей)";
+    } else {
+        $massege = "Произошла ошибка при геренации данных и добавления в базу";
+    } 
+}
+
 switch (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)) {
     case '/': 
         include $_SERVER['DOCUMENT_ROOT'] . '/template/main.php'; 
         break;
     case '/action/': 
         include $_SERVER['DOCUMENT_ROOT'] . '/template/action.php'; 
+        break;
+    case '/statistic/': 
+        include $_SERVER['DOCUMENT_ROOT'] . '/template/statistic.php'; 
         break;
     default: 
         include $_SERVER['DOCUMENT_ROOT'] . '/template/404.php'; 

@@ -33,6 +33,12 @@ input {
     border: 0px;
 }
 
+.btn_generate {
+    background-color: #223ccf;
+    color: #fff;
+    border: 0px;
+}
+
 .result {
     width: 250px;
     margin: 10px auto;

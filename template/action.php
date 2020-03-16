@@ -4,6 +4,7 @@
 
     <form action="/action/" method="post">
         <input class="btn_action" type="submit" name="action" value="Добавить событие">
+        <input class="btn_generate" type="submit" name="generate" value="Генерировать данные">
         <input class="btn_exit" type="submit" name="exit" value="Выйти">
     </form>
     <div class="result"><?= $massege ?? " " ?></div>
