@@ -58,6 +58,32 @@ if (isset($_POST['register'])) {
     }
 }
 
+if (isset($_POST['register'])) {
+    $login = trim($_POST['login']);
+    $password = trim($_POST['password']);
+    $pgResult = pg_query($dbConnection, "SELECT login, password FROM users WHERE login = '$login'");
+    if(!pg_num_rows($pgResult)){
+        $pgResult = pg_query($dbConnection, "INSERT INTO users (login, password) VALUES ('$login', '$password')");
+        if ($pgResult) {
+            $massege = "Данные успешно занесены в базу";
+        } else {
+            $massege = "Произошла ошибка";
+        }
+    } else {
+        $massege = "Такой пользователь уже существует";
+    }
+}
+
+if(isset($_POST['sum']) || isset($_POST['average'])) {
+    $dateStart = date("Y-m-d H:i:s", strToTime($_POST['dateStart']));
+    $string_query = "SELECT * FROM actions_user WHERE action_date >= '$dateStart'";
+    if($_POST['dateEnd'] != "") {
+        $dateEnd = date("Y-m-d H:i:s", strToTime($_POST['dateEnd'].":59"));
+        $string_query = $string_query. " AND action_date <= '$dateEnd'";
+    }
+    $pgResult = pg_query($dbConnection, $string_query);
+}
+
 if (isset($_POST['generate'])) {
     $userid = $_SESSION['loginId'];
     $string_query = "INSERT INTO actions_user (user_id, action_date) VALUES ";
