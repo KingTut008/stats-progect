@@ -2,6 +2,8 @@
 error_reporting(E_ALL);
 session_start();
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/modules/createDataArray.php'; 
+
 $setConnection = "host=localhost port=5432 dbname=mydb user=admin password=admin";
 $dbConnection = pg_connect($setConnection);
 
@@ -76,12 +78,17 @@ if (isset($_POST['register'])) {
 
 if(isset($_POST['sum']) || isset($_POST['average'])) {
     $dateStart = date("Y-m-d H:i:s", strToTime($_POST['dateStart']));
-    $string_query = "SELECT * FROM actions_user WHERE action_date >= '$dateStart'";
+    $string_query = "SELECT actions_user.id, actions_user.action_date, users.login 
+                     FROM actions_user
+                     LEFT JOIN  users ON users.id = actions_user.user_id 
+                     WHERE action_date >= '$dateStart'";
     if($_POST['dateEnd'] != "") {
         $dateEnd = date("Y-m-d H:i:s", strToTime($_POST['dateEnd'].":59"));
         $string_query = $string_query. " AND action_date <= '$dateEnd'";
     }
+    $string_query = $string_query. " ORDER BY users.login";
     $pgResult = pg_query($dbConnection, $string_query);
+    $dataArray = createDataArray($pgResult);
 }
 
 if (isset($_POST['generate'])) {

@@ -13,14 +13,9 @@
         <input type="submit" name="average" value="Таблица средних значений">
     </form>
     <?php 
-        if (isset($pgResult)) {
-            echo $string_query;
-            echo "<pre>";
-            while($result = pg_fetch_assoc($pgResult)) {
-                var_dump($result);
-            }
-            echo "<pre>";
-        }
+        echo "<pre>";
+        var_dump($dataArray);
+        echo "<pre>";
     ?>
 
 <?php 
