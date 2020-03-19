@@ -24,5 +24,10 @@ function createDataArray ($dataQuery){
             $data[$item][date("H", strtotime($result['action_date']))]++;
         }
     }
-    return $data;  
-} 
+    
+    for ($i = 0; $i < count($data); $i++){
+        $data[$i] = array_values($data[$i]);
+    }
+
+    return $data;
+}

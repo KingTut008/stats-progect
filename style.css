@@ -9,6 +9,26 @@ input {
     margin: 10px auto;
 }
 
+table {
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+    border: 1px solid #434343;
+    border-spacing: 0px;
+}
+
+thead {
+    background-color: #bebebe;
+}
+
+thead td {
+    border-left: 1px solid #434343;
+}
+
+thead td:first-child {
+    border: none;
+}
+
 .btn_enter {
     background-color: #2fdf2f;
     color: #fff;
