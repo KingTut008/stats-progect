@@ -88,7 +88,12 @@ if(isset($_POST['sum']) || isset($_POST['average'])) {
     }
     $string_query = $string_query. " ORDER BY users.login";
     $pgResult = pg_query($dbConnection, $string_query);
-    $dataArray = createDataArray($pgResult);
+    $dataArray = createDataArray($pgResult, isset($_POST['average']) ? 1 : 0);
+
+    $message = "Вы за просили статистику с ".$dateStart." по ".$dateEnd;
+    if (isset($_POST['average'])){
+        $message = $message." (среднее значение)";
+    }
 }
 
 if (isset($_POST['generate'])) {

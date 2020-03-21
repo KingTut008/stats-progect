@@ -63,3 +63,25 @@ thead td:first-child {
     width: 250px;
     margin: 10px auto;
 }
+
+.header {
+    width: 95%;
+    margin: 10px auto;
+}
+.message {
+    width: max-content;
+    margin: 10px auto;
+}
+
+.menu-item {
+    width: max-content;
+    margin: 0px auto;
+}
+
+.menu-item p, .menu-item input{
+    box-sizing: border-box;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: inline-block;
+}
